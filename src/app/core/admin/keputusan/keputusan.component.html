@@ -1,0 +1,583 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">Keputusan</h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="ni ni-trophy text-dark"> </i>
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h6 class="text-uppercase text-muted ls-1 mb-1">Carta</h6>
+          <h5 class="h3 mb-0">Statistik Keputusan</h5>
+        </div>
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="kep1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h6 class="text-uppercase text-muted ls-1 mb-1">Carta</h6>
+          <h5 class="h3 mb-0">Peperiksaan Pertengahan Tahun (PPT)</h5>
+        </div>
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="kep2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h6 class="text-uppercase text-muted ls-1 mb-1">Carta</h6>
+          <h5 class="h3 mb-0">Peperiksaan Akhir Tahun (PAT)</h5>
+        </div>
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="kep3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h6 class="text-uppercase text-muted ls-1 mb-1">Carta</h6>
+          <h5 class="h3 mb-0">Peperiksaan Percubaan UPSR/SPM</h5>
+        </div>
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="kep4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h6 class="text-uppercase text-muted ls-1 mb-1">
+            Senarai Pemarkahan
+          </h6>
+          <h5 class="h3 mb-0">Peperiksaan Pertengahan Tahun (PPT)</h5>
+        </div>
+        <div class="card-body">
+          <div class="dataTables_wrapper pb-4">
+            <div class="row">
+              <div class="col">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select
+                      name="datatable_length"
+                      aria-controls="datatable"
+                      class="form-control form-control-sm"
+                      (change)="entriesChange($event)"
+                    >
+                      <option value="5" [selected]="entries == 10">5</option>
+                      <option value="10" [selected]="entries == 25">10</option>
+                      <option value="15" [selected]="entries == 50">15</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    entries
+                  </label>
+                </div>
+              </div>
+              <div class="col-auto">
+                <!-- <button
+                  type="button"
+                  class="btn btn-primary btn-sm mt-1"
+                  (click)="openModal(createData)"
+                >
+                  Cipta
+                </button> -->
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder="Search records"
+                      aria-controls="datatable"
+                      (keyup)="filterTable($event)"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable
+              class="bootstrap selection-cell"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="entries != -1 ? entries : undefined"
+              [rows]="temp"
+              (activate)="onActivate($event)"
+            >
+              <ngx-datatable-column name="Tahun"></ngx-datatable-column>
+              <ngx-datatable-column name="Negeri"></ngx-datatable-column>
+              <ngx-datatable-column name="Tingkatan"></ngx-datatable-column>
+              <ngx-datatable-column name="Umur"></ngx-datatable-column>
+              <ngx-datatable-column name="Sekolah"></ngx-datatable-column>
+              <ngx-datatable-column name="Matapelajaran"></ngx-datatable-column>
+              <ngx-datatable-column name="Pemarkahan"></ngx-datatable-column>
+              <ngx-datatable-column name="status">
+                <ng-template ngx-datatable-header-template>
+                  <span>Status</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <span
+                    *ngIf="row.status == 'lulus'"
+                    class="badge badge-pill badge-success"
+                    >Lulus</span
+                  >
+                  <span
+                    *ngIf="row.status == 'tidak'"
+                    class="badge badge-pill badge-danger"
+                    >Tidak lulus</span
+                  >
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    (click)="openModal(createData)"
+                  >
+                    Lihat
+                  </button>
+                  <a class="btn btn-sm btn-danger">
+                    <i class="fas fa-file-pdf text-white"></i> </a
+                  ><a class="btn btn-sm btn-success">
+                    <i class="fas fa-file-excel text-white"></i>
+                  </a>
+                  <a class="btn btn-sm btn-danger" (click)="delete()">
+                    <i class="fas fa-trash text-white"></i>
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h6 class="text-uppercase text-muted ls-1 mb-1">
+            Senarai Pemarkahan
+          </h6>
+          <h5 class="h3 mb-0">Peperiksaan Akhir Tahun (PAT)</h5>
+        </div>
+        <div class="card-body">
+          <div class="dataTables_wrapper pb-4">
+            <div class="row">
+              <div class="col">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select
+                      name="datatable_length"
+                      aria-controls="datatable"
+                      class="form-control form-control-sm"
+                      (change)="entriesChange($event)"
+                    >
+                      <option value="5" [selected]="entries == 10">5</option>
+                      <option value="10" [selected]="entries == 25">10</option>
+                      <option value="15" [selected]="entries == 50">15</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    entries
+                  </label>
+                </div>
+              </div>
+              <div class="col-auto">
+                <!-- <button
+                  type="button"
+                  class="btn btn-primary btn-sm mt-1"
+                  (click)="openModal(createData)"
+                >
+                  Cipta
+                </button> -->
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder="Search records"
+                      aria-controls="datatable"
+                      (keyup)="filterTable($event)"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable
+              class="bootstrap selection-cell"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="entries != -1 ? entries : undefined"
+              [rows]="temp"
+              (activate)="onActivate($event)"
+            >
+              <ngx-datatable-column name="Tahun"></ngx-datatable-column>
+              <ngx-datatable-column name="Negeri"></ngx-datatable-column>
+              <ngx-datatable-column name="Tingkatan"></ngx-datatable-column>
+              <ngx-datatable-column name="Umur"></ngx-datatable-column>
+              <ngx-datatable-column name="Sekolah"></ngx-datatable-column>
+              <ngx-datatable-column name="Matapelajaran"></ngx-datatable-column>
+              <ngx-datatable-column name="Pemarkahan"></ngx-datatable-column>
+              <ngx-datatable-column name="status">
+                <ng-template ngx-datatable-header-template>
+                  <span>Status</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <span
+                    *ngIf="row.status == 'lulus'"
+                    class="badge badge-pill badge-success"
+                    >Lulus</span
+                  >
+                  <span
+                    *ngIf="row.status == 'tidak'"
+                    class="badge badge-pill badge-danger"
+                    >Tidak lulus</span
+                  >
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    (click)="openModal(createData)"
+                  >
+                    Lihat
+                  </button>
+                  <a class="btn btn-sm btn-danger">
+                    <i class="fas fa-file-pdf text-white"></i> </a
+                  ><a class="btn btn-sm btn-success">
+                    <i class="fas fa-file-excel text-white"></i>
+                  </a>
+                  <a class="btn btn-sm btn-danger" (click)="delete()">
+                    <i class="fas fa-trash text-white"></i>
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #createData>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Paparan markah pentaksiran
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="card card-profile">
+          <img
+            alt="Image placeholder"
+            class="card-img-top"
+            src="assets/img/theme/img-1-1000x600.jpg"
+          />
+
+          <div class="row justify-content-center">
+            <div class="col-lg-3 order-lg-2">
+              <div class="card-profile-image">
+                <a>
+                  <img
+                    class="rounded-circle"
+                    src="assets/img/theme/school.png"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
+          >
+            <div class="d-flex justify-content-between">
+              <a class="btn btn-sm btn-info mr-4" href="javascript:void(0)">
+                Connect
+              </a>
+
+              <a
+                class="btn btn-sm btn-default float-right"
+                href="javascript:void(0)"
+              >
+                Message
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <div class="dataTables_wrapper">
+              <div class="row">
+                <div class="col">
+                  <div class="dataTables_length" id="datatable_length">
+                    <label>
+                      Show
+                      <select
+                        name="datatable_length"
+                        aria-controls="datatable"
+                        class="form-control form-control-sm"
+                        (change)="entriesChange($event)"
+                      >
+                        <option value="5" [selected]="entries == 10">5</option>
+                        <option value="10" [selected]="entries == 10">
+                          10
+                        </option>
+                        <option value="15" [selected]="entries == 15">
+                          15
+                        </option>
+                        <option value="-1" [selected]="entries == -1">
+                          All
+                        </option>
+                      </select>
+                      entries
+                    </label>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <!-- <button
+                    type="button"
+                    class="btn btn-primary btn-sm mt-1"
+                    (click)="openModal(createData)"
+                  >
+                    Cipta
+                  </button> -->
+                  <div id="datatable_filter" class="dataTables_filter">
+                    <label>
+                      <input
+                        type="search"
+                        class="form-control form-control-sm"
+                        placeholder="Search records"
+                        aria-controls="datatable"
+                        (keyup)="filterTable($event)"
+                      />
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <ngx-datatable
+                class="bootstrap selection-cell"
+                [columnMode]="'force'"
+                [headerHeight]="50"
+                [footerHeight]="50"
+                [rowHeight]="'auto'"
+                [limit]="entries != -1 ? entries : undefined"
+                [rows]="temp"
+                (activate)="onActivate($event)"
+              >
+                <ngx-datatable-column name="Nama"></ngx-datatable-column>
+                <ngx-datatable-column name="Sekolah"></ngx-datatable-column>
+                <ngx-datatable-column name="Jenis"></ngx-datatable-column>
+                <ngx-datatable-column name="Markah"></ngx-datatable-column>
+                <ngx-datatable-column name="Tarikh"></ngx-datatable-column>
+                <ngx-datatable-column>
+                  <ng-template let-row="row" ngx-datatable-cell-template>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-sm"
+                      (click)="openModal2(action)"
+                    >
+                      action
+                    </button>
+                    <a class="btn btn-sm btn-danger">
+                      <i class="fas fa-file-pdf text-white"></i>
+                    </a>
+                    <a class="btn btn-sm btn-success">
+                      <i class="fas fa-file-excel text-white"></i>
+                    </a>
+                  </ng-template>
+                </ngx-datatable-column>
+              </ngx-datatable>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- <div class="card-header bg-secondary">
+            <h6 class="text-uppercase text-muted ls-1 mb-1">Carta</h6>
+            <h5 class="h3 mb-0">Statistik Pentaksiran 2019-2021</h5>
+          </div> -->
+          <div class="card-body">
+            <div class="chart">
+              <div class="amchart" id="kep5"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-success" type="button" (click)="confirm()">
+      Simpan
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="closeModal()"
+    >
+      Tutup
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #action>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Paparan Markah Pentaksiran</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef2.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="card card-profile">
+          <img
+            alt="Image placeholder"
+            class="card-img-top"
+            src="assets/img/theme/img-1-1000x600.jpg"
+          />
+
+          <div class="row justify-content-center">
+            <div class="col-lg-3 order-lg-2">
+              <div class="card-profile-image">
+                <a>
+                  <img
+                    class="rounded-circle"
+                    src="assets/img/default/avatar.png"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
+          >
+            <div class="d-flex justify-content-between">
+              <a class="btn btn-sm btn-info mr-4" href="javascript:void(0)">
+                Connect
+              </a>
+
+              <a
+                class="btn btn-sm btn-default float-right"
+                href="javascript:void(0)"
+              >
+                Message
+              </a>
+            </div>
+          </div>
+          <h5 class="text-center">Mohd Ali</h5>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9">
+        <div class="form-group">
+          <label class="form-control-label">Matapelajaran</label>
+          <select class="form-control">
+            <option>Bahasa Melayu</option>
+            <option>Bahasa Inggeris</option>
+            <option>Matematik</option>
+            <option>Sains</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-secondary btn-lg btn-block">
+          Tambah subjek
+        </button>
+      </div>
+      <div class="col-2">
+        <label class="form-control-label">Markah</label>
+        <input type="text" class="form-control" placeholder="80" />
+      </div>
+      <div class="col-1">
+        <label class="form-control-label">Gred</label>
+        <input type="text" class="form-control" placeholder="A" />
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" type="button" (click)="confirm()">
+      Kemaskini
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="closeModal2()"
+    >
+      Tutup
+    </button>
+  </div>
+</ng-template>

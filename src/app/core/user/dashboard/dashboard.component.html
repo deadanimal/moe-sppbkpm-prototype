@@ -1,0 +1,237 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">Dashboard</h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-home text-dark"> </i>
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="h5 text-muted mb-1 widget-calendar-year"></div>
+      <div class="h3 mb-0 widget-calendar-day"></div>
+    </div>
+    <div class="col-lg-6">
+      <h5 class="h3 text-right">
+        Guru Penilai jQAF,<br />
+        Guru Halaqah,<br />
+        Guru Kelas,<br />
+        Guru Mata Pelajaran
+      </h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h6 class="text-uppercase text-muted ls-1 mb-1">Carta</h6>
+          <h5 class="h3 mb-0">Pelajar Mengikut Tingkatan</h5>
+        </div>
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="dashuser1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h6 class="text-uppercase text-muted ls-1 mb-1">Carta</h6>
+          <h5 class="h3 mb-0">Jumlah Pelajar Mengikut Tingkatan</h5>
+        </div>
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="dashuser2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Nama Murid</th>
+
+                <th scope="col">Tingkatan</th>
+
+                <th scope="col">Kelas</th>
+
+                <th scope="col">Peperiksaan Terakhir</th>
+
+                <th scope="col">Tarikh</th>
+
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody class="list">
+              <tr>
+                <td>Ali</td>
+                <td>4</td>
+                <td>A</td>
+                <td>Awal</td>
+                <td>26/3/2019</td>
+                <td>
+                  <button
+                    class="btn btn-sm bg-primary text-white"
+                    (click)="openModal(action)"
+                  >
+                    Action
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>Abu</td>
+                <td>5</td>
+                <td>B</td>
+                <td>Tengah</td>
+                <td>17/6/2019</td>
+                <td>
+                  <button
+                    class="btn btn-sm bg-primary text-white"
+                    (click)="openModal(action)"
+                  >
+                    Action
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>Siti</td>
+                <td>2</td>
+                <td>D</td>
+                <td>Akhir</td>
+                <td>29/11/2019</td>
+                <td>
+                  <button
+                    class="btn btn-sm bg-primary text-white"
+                    (click)="openModal(action)"
+                  >
+                    Action
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #action>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Paparan Markah Pentaksiran</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef2.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="card card-profile">
+          <img
+            alt="Image placeholder"
+            class="card-img-top"
+            src="assets/img/theme/img-1-1000x600.jpg"
+          />
+
+          <div class="row justify-content-center">
+            <div class="col-lg-3 order-lg-2">
+              <div class="card-profile-image">
+                <a>
+                  <img
+                    class="rounded-circle"
+                    src="assets/img/default/avatar.png"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
+          >
+            <div class="d-flex justify-content-between">
+              <a class="btn btn-sm btn-info mr-4" href="javascript:void(0)">
+                Connect
+              </a>
+
+              <a
+                class="btn btn-sm btn-default float-right"
+                href="javascript:void(0)"
+              >
+                Message
+              </a>
+            </div>
+          </div>
+          <h5 class="text-center">Mohd Ali</h5>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9">
+        <div class="form-group">
+          <label class="form-control-label">Matapelajaran</label>
+          <select class="form-control">
+            <option>Bahasa Melayu</option>
+            <option>Bahasa Inggeris</option>
+            <option>Matematik</option>
+            <option>Sains</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-secondary btn-lg btn-block">
+          Tambah subjek
+        </button>
+      </div>
+      <div class="col-2">
+        <label class="form-control-label">Markah</label>
+        <input type="text" class="form-control" placeholder="80" />
+      </div>
+      <div class="col-1">
+        <label class="form-control-label">Gred</label>
+        <input type="text" class="form-control" placeholder="A" />
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" type="button" (click)="confirm()">
+      Kemaskini
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="closeModal2()"
+    >
+      Tutup
+    </button>
+  </div>
+</ng-template>

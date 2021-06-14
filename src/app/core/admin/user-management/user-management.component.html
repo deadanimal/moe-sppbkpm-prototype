@@ -1,0 +1,731 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">User Management</h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-users-cog text-dark"> </i>
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-4">
+          <div class="card card-stats">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">
+                    Total traffic
+                  </h5>
+
+                  <span class="h2 font-weight-bold mb-0"> 350,897 </span>
+                </div>
+              </div>
+
+              <p class="mt-3 mb-0 text-sm">
+                <span class="text-success mr-2">
+                  <i class="fa fa-arrow-up"> </i> 3.48%
+                </span>
+
+                <span class="text-nowrap"> Since last month </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-4">
+          <div class="card card-stats">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">
+                    Total Registered users
+                  </h5>
+
+                  <span class="h2 font-weight-bold mb-0"> 2,356 </span>
+                </div>
+              </div>
+
+              <p class="mt-3 mb-0 text-sm">
+                <span class="text-success mr-2">
+                  <i class="fa fa-arrow-up"> </i> 3.48%
+                </span>
+
+                <span class="text-nowrap"> Since last month </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-4">
+          <div class="card card-stats">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">
+                    Total Active user
+                  </h5>
+
+                  <span class="h2 font-weight-bold mb-0"> 924 </span>
+                </div>
+              </div>
+
+              <p class="mt-3 mb-0 text-sm">
+                <span class="text-success mr-2">
+                  <i class="fa fa-arrow-up"> </i> 3.48%
+                </span>
+
+                <span class="text-nowrap"> Since last month </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col d-flex justify-content-sm-end">
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="openModal(createUser)"
+      >
+        Cipta
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h6 class="text-uppercase text-muted ls-1 mb-1">Carta</h6>
+          <h5 class="h3 mb-0">Pengguna baru daftar</h5>
+        </div>
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="usm1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h5 class="h3 mb-0">Carian</h5>
+        </div>
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-6">
+              <input type="text" class="form-control" placeholder="username" />
+            </div>
+            <div class="col-6">
+              <select class="form-control">
+                <option>Active</option>
+                <option>Non-active</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-6">
+              <input type="text" class="form-control" placeholder="email" />
+            </div>
+            <div class="col-6">
+              <select class="form-control">
+                <option>Developer</option>
+                <option>Admin</option>
+              </select>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-auto">
+              <button class="btn btn-primary" type="button">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">ID</th>
+
+                  <th scope="col">Username</th>
+
+                  <th scope="Email"></th>
+
+                  <th scope="col">status</th>
+
+                  <th scope="col">user type</th>
+
+                  <th scope="col">subscribe api</th>
+
+                  <th scope="col">last login</th>
+
+                  <th scope="col">action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>01212</td>
+
+                  <td>john3212</td>
+
+                  <td>john3212@email.com</td>
+
+                  <td><span class="badge badge-success">in use</span></td>
+
+                  <td>Developer</td>
+
+                  <td>/base-rate/bank-code</td>
+
+                  <td>01/02/2019</td>
+
+                  <td>
+                    <button
+                      class="btn btn-icon btn-2 btn-sm btn-primary"
+                      type="button"
+                      (click)="openModal1(action)"
+                    >
+                      <span class="btn-inner--icon"
+                        ><i class="fas fa-edit"></i
+                      ></span>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>716171</td>
+
+                  <td>kassim0991</td>
+
+                  <td>kassim0991@email.com</td>
+
+                  <td><span class="badge badge-success">in use</span></td>
+
+                  <td>Admin</td>
+
+                  <td>/base-rate/bank-code<br />/profix_fpx/</td>
+
+                  <td>31/10/2019</td>
+
+                  <td>
+                    <button
+                      class="btn btn-icon btn-sm btn-2 btn-primary"
+                      type="button"
+                      (click)="openModal1(action)"
+                    >
+                      <span class="btn-inner--icon"
+                        ><i class="fas fa-edit"></i
+                      ></span>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>81711</td>
+
+                  <td>kamal121</td>
+
+                  <td>kamal121@email.com</td>
+
+                  <td><span class="badge badge-success">in use</span></td>
+
+                  <td>Developer</td>
+
+                  <td>/base-rate/bank-code<br />/exchange_rate/</td>
+
+                  <td>20/01/2019</td>
+
+                  <td>
+                    <button
+                      class="btn btn-icon btn-sm btn-2 btn-primary"
+                      type="button"
+                      (click)="openModal1(action)"
+                    >
+                      <span class="btn-inner--icon"
+                        ><i class="fas fa-edit"></i
+                      ></span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h6 class="text-uppercase text-muted ls-1 mb-1">Senarai</h6>
+          <h5 class="h3 mb-0">Senarai Pengguna</h5>
+        </div>
+        <div class="card-body">
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select
+                      name="datatable_length"
+                      aria-controls="datatable"
+                      class="form-control form-control-sm"
+                    >
+                      <option value="10" [selected]="tableEntries == 5">
+                        5
+                      </option>
+                      <option value="25" [selected]="tableEntries == 10">
+                        10
+                      </option>
+                      <option value="50" [selected]="tableEntries == 15">
+                        15
+                      </option>
+                      <option value="-1" [selected]="tableEntries == -1">
+                        All
+                      </option>
+                    </select>
+                    records
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder="Search records"
+                      aria-controls="datatable"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable
+              class="bootstrap selection-cell"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="tableEntries != -1 ? tableEntries : undefined"
+              [rows]="tableTemp"
+              (activate)="onActivate($event)"
+            >
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>User ID</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.user_id }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Name"></ngx-datatable-column>
+              <ngx-datatable-column name="Email"></ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Joined At</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.joined_at }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>User Type</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.user_type }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Status</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <span
+                    *ngIf="row.is_active == 'Active'"
+                    class="badge badge-pill badge-success"
+                    >Active</span
+                  >
+                  <span
+                    *ngIf="row.is_active == 'Inactive'"
+                    class="badge badge-pill badge-warning"
+                    >Inactive</span
+                  >
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <button type="button" class="btn btn-primary btn-sm">
+                    Detail
+                  </button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #createUser>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Create New User
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="registerForm">
+      <div class="form-group">
+        <label class="form-control-label">Name</label>
+        <input
+          class="form-control"
+          placeholder="Enter name"
+          formControlName="name"
+          type="text"
+        />
+        <ng-container *ngFor="let message of registerFormMessages.name">
+          <div
+            *ngIf="
+              registerForm.get('name').hasError(message.type) &&
+              (registerForm.get('name').dirty ||
+                registerForm.get('name').touched)
+            "
+          >
+            <p class="error-message">
+              <span>{{ message.message }}</span>
+            </p>
+          </div>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label">Email</label>
+        <input
+          class="form-control"
+          placeholder="Enter email"
+          formControlName="email"
+          type="text"
+        />
+        <ng-container *ngFor="let message of registerFormMessages.email">
+          <div
+            *ngIf="
+              registerForm.get('email').hasError(message.type) &&
+              (registerForm.get('email').dirty ||
+                registerForm.get('email').touched)
+            "
+          >
+            <p class="error-message">
+              <span>{{ message.message }}</span>
+            </p>
+          </div>
+        </ng-container>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      class="btn btn-success"
+      type="button"
+      (click)="confirm()"
+      [disabled]="!registerForm.valid"
+    >
+      Create
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="closeModal()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #action>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Action
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="h3 mb-0">Carian</h5>
+          </div>
+          <div class="card-body">
+            <div class="row mb-2">
+              <div class="col-6">
+                <input type="text" class="form-control" placeholder="ID" />
+              </div>
+              <div class="col-6">
+                <input type="text" class="form-control" placeholder="email" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="example-date-input" class="form-control-label"
+                    >Date</label
+                  >
+                  <input
+                    class="form-control"
+                    type="date"
+                    value="2018-11-23"
+                    id="example-date-input"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+              <div class="col-auto">
+                <button class="btn btn-primary btn-sm" type="button">
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="h3 mb-0">View user detail</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <form>
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label"
+                      >ID</label
+                    >
+                    <input
+                      class="form-control"
+                      type="text"
+                      value="01212"
+                      id="example-text-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="example-email-input" class="form-control-label"
+                      >Email</label
+                    >
+                    <input
+                      class="form-control"
+                      type="email"
+                      value="argon@example.com"
+                      id="example-email-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="example-email-input" class="form-control-label"
+                      >User type</label
+                    >
+                    <input
+                      class="form-control"
+                      type="text"
+                      value="Developer"
+                      id="example-text-input"
+                    />
+                  </div>
+                </form>
+              </div>
+              <div class="col-6">
+                <form>
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label"
+                      >Username</label
+                    >
+                    <input
+                      class="form-control"
+                      type="text"
+                      value="najhannajib"
+                      id="example-text-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="example-email-input" class="form-control-label"
+                      >Status</label
+                    >
+                    <input
+                      class="form-control"
+                      type="text"
+                      value="in use"
+                      id="example-text-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="example-email-input" class="form-control-label"
+                      >User type</label
+                    >
+                    <input
+                      class="form-control"
+                      type="text"
+                      value="01/01/2020"
+                      id="example-text-input"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="h3 mb-0">Subscribe API</h5>
+                </div>
+                <div class="card-body p-0">
+                    <ul class=" list-group list-group-flush" data-toggle="checklist">
+                        <li
+                          class=" checklist-entry list-group-item flex-column align-items-start py-4 px-4"
+                        >
+                          <div class=" checklist-item checklist-item-success">
+                            <div class=" checklist-info">
+                              <h5 class=" checklist-title mb-0">/base-rate/bank-code</h5>
+            
+                              <small>User can manage account and manage profile, subscribe new API</small>
+                            </div>
+                          </div>
+                        </li>
+            
+                        <li
+                          class=" checklist-entry list-group-item flex-column align-items-start py-4 px-4"
+                        >
+                          <div class=" checklist-item checklist-item-success">
+                            <div class=" checklist-info">
+                              <h5 class=" checklist-title mb-0">/exchange_rate/</h5>
+            
+                              <small>The conversion between Malaysia currency with other country currency.</small>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <form [formGroup]="registerForm">
+        <div class="form-group">
+          <label class="form-control-label">Name</label>
+          <input
+            class="form-control"
+            placeholder="Enter name"
+            formControlName="name"
+            type="text"
+          />
+          <ng-container *ngFor="let message of registerFormMessages.name">
+            <div
+              *ngIf="
+                registerForm.get('name').hasError(message.type) &&
+                (registerForm.get('name').dirty ||
+                  registerForm.get('name').touched)
+              "
+            >
+              <p class="error-message">
+                <span>{{ message.message }}</span>
+              </p>
+            </div>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Email</label>
+          <input
+            class="form-control"
+            placeholder="Enter email"
+            formControlName="email"
+            type="text"
+          />
+          <ng-container *ngFor="let message of registerFormMessages.email">
+            <div
+              *ngIf="
+                registerForm.get('email').hasError(message.type) &&
+                (registerForm.get('email').dirty ||
+                  registerForm.get('email').touched)
+              "
+            >
+              <p class="error-message">
+                <span>{{ message.message }}</span>
+              </p>
+            </div>
+          </ng-container>
+        </div>
+      </form> -->
+  </div>
+
+  <div class="modal-footer">
+    <button
+      class="btn btn-success"
+      type="button"
+      (click)="confirm()"
+      [disabled]="!registerForm.valid"
+    >
+      Create
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="closeModal()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
